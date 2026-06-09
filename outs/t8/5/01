@@ -1,0 +1,152 @@
+thread thread thread 1 started
+02 started
+ started
+thread 3 started
+thread 4 started
+thread 5 started
+thread 6 started
+thread 7 started
+===================================================
+STATE 0
+===================================================
+
+        G Y W 
+        G Y W 
+        R Y W 
+
+
+R R B   Y O G   O O O   
+B G W   R R B   Y B G   
+O G W   R R B   Y B R   
+
+
+        B B O 
+        W W W 
+        Y Y Y 
+
+
+        G G G 
+        O O O 
+        W R B 
+
+
+===================================================
+STATE 1
+===================================================
+
+        W W W 
+        Y Y Y 
+        G G R 
+
+
+B R W   R R B   Y O G   
+B G W   R R B   Y B G   
+O G W   R R B   Y B R   
+
+
+        B B O 
+        W W W 
+        Y Y Y 
+
+
+        G G G 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 2
+===================================================
+
+        W W W 
+        Y Y Y 
+        Y Y Y 
+
+
+B R R   B B B   O O G   
+B G G   R R R   B B G   
+O G G   R R R   B B R   
+
+
+        W W W 
+        W W W 
+        Y Y Y 
+
+
+        G G G 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 3
+===================================================
+
+        O B B 
+        Y Y Y 
+        Y Y Y 
+
+
+Y R R   B B B   O O W   
+Y G G   R R R   B B W   
+Y G G   R R R   B B W   
+
+
+        W W W 
+        W W W 
+        R G G 
+
+
+        G O O 
+        G O O 
+        G O O 
+
+
+===================================================
+STATE 4
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        Y Y Y 
+
+
+R R R   B B B   O O O   
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+
+
+        W W W 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        G G G 
+
+
+===================================================
+STATE 5
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        Y Y Y 
+
+
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+
+
+        W W W 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+

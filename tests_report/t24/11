@@ -1,0 +1,75 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+for s in samples/multithread/11/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > "outs/11/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/multithread/11/01
+Elapsed: 0:05.68
+CPU: 1390%
+Max memory: 1084032 KB
+OK: samples/multithread/11/01
+==============================
+Running: samples/multithread/11/02
+Elapsed: 1:03.17
+CPU: 1270%
+Max memory: 10456020 KB
+OK: samples/multithread/11/02
+==============================
+Running: samples/multithread/11/03
+Elapsed: 0:09.28
+CPU: 1292%
+Max memory: 1606820 KB
+OK: samples/multithread/11/03
+==============================
+Running: samples/multithread/11/04
+Elapsed: 0:13.43
+CPU: 1275%
+Max memory: 2306752 KB
+OK: samples/multithread/11/04
+==============================
+Running: samples/multithread/11/05
+Elapsed: 0:00.95
+CPU: 1381%
+Max memory: 213120 KB
+OK: samples/multithread/11/05
+==============================
+Running: samples/multithread/11/06
+Elapsed: 0:04.54
+CPU: 1350%
+Max memory: 857088 KB
+OK: samples/multithread/11/06
+==============================
+Running: samples/multithread/11/07
+Elapsed: 0:22.73
+CPU: 1272%
+Max memory: 3841384 KB
+OK: samples/multithread/11/07
+==============================
+Running: samples/multithread/11/08
+Elapsed: 0:13.56
+CPU: 1282%
+Max memory: 2294200 KB
+OK: samples/multithread/11/08
+==============================
+Running: samples/multithread/11/09
+Elapsed: 0:06.75
+CPU: 1288%
+Max memory: 1178288 KB
+OK: samples/multithread/11/09
+==============================
+Running: samples/multithread/11/10
+Elapsed: 0:49.93
+CPU: 1271%
+Max memory: 8233144 KB
+OK: samples/multithread/11/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

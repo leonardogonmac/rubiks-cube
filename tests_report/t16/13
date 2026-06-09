@@ -1,0 +1,82 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+mkdir -p outs/t16/13
+for s in samples/13/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 16 < $s > "outs/t16/13/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/13/01
+Elapsed: 9:31.96
+CPU: 1023%
+Max memory: 54165504 KB
+OK: samples/13/01
+==============================
+Running: samples/13/02
+Elapsed: 8:04.81
+CPU: 1069%
+Max memory: 52063156 KB
+OK: samples/13/02
+==============================
+Running: samples/13/03
+Elapsed: 10:22.20
+CPU: 972%
+Max memory: 76828844 KB
+OK: samples/13/03
+==============================
+Running: samples/13/04
+Elapsed: 18:08.93
+CPU: 978%
+Max memory: 133186164 KB
+OK: samples/13/04
+==============================
+Running: samples/13/05
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 19:20.11
+CPU: 1470%
+Max memory: 207225316 KB
+Skipped/failed due to memory limit or runtime error: samples/13/05
+==============================
+Running: samples/13/06
+Elapsed: 25:46.16
+CPU: 922%
+Max memory: 151974012 KB
+OK: samples/13/06
+==============================
+Running: samples/13/07
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 21:23.69
+CPU: 1478%
+Max memory: 207294412 KB
+Skipped/failed due to memory limit or runtime error: samples/13/07
+==============================
+Running: samples/13/08
+Elapsed: 15:50.34
+CPU: 972%
+Max memory: 116050900 KB
+OK: samples/13/08
+==============================
+Running: samples/13/09
+Elapsed: 19:36.50
+CPU: 952%
+Max memory: 137773720 KB
+OK: samples/13/09
+==============================
+Running: samples/13/10
+Elapsed: 0:38.58
+CPU: 964%
+Max memory: 4723512 KB
+OK: samples/13/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

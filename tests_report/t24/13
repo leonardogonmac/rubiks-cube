@@ -1,0 +1,81 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+for s in samples/multithread/13/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > "outs/13/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/multithread/13/01
+Elapsed: 5:04.28
+CPU: 1278%
+Max memory: 48349952 KB
+OK: samples/multithread/13/01
+==============================
+Running: samples/multithread/13/02
+Elapsed: 6:12.72
+CPU: 1270%
+Max memory: 60222884 KB
+OK: samples/multithread/13/02
+==============================
+Running: samples/multithread/13/03
+Elapsed: 8:33.74
+CPU: 1267%
+Max memory: 81175584 KB
+OK: samples/multithread/13/03
+==============================
+Running: samples/multithread/13/04
+Elapsed: 15:49.52
+CPU: 1262%
+Max memory: 148978404 KB
+OK: samples/multithread/13/04
+==============================
+Running: samples/multithread/13/05
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+Command terminated by signal 6
+Elapsed: 12:11.54
+CPU: 2255%
+Max memory: 208149380 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/13/05
+==============================
+Running: samples/multithread/13/06
+Elapsed: 9:42.92
+CPU: 1267%
+Max memory: 91193364 KB
+OK: samples/multithread/13/06
+==============================
+Running: samples/multithread/13/07
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 12:07.05
+CPU: 2258%
+Max memory: 207783156 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/13/07
+==============================
+Running: samples/multithread/13/08
+Elapsed: 12:19.19
+CPU: 1264%
+Max memory: 115792524 KB
+OK: samples/multithread/13/08
+==============================
+Running: samples/multithread/13/09
+Elapsed: 11:06.62
+CPU: 1271%
+Max memory: 105077764 KB
+OK: samples/multithread/13/09
+==============================
+Running: samples/multithread/13/10
+Elapsed: 0:30.35
+CPU: 1282%
+Max memory: 5157304 KB
+OK: samples/multithread/13/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

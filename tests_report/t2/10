@@ -1,0 +1,76 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+mkdir -p outs/t2/10
+for s in samples/10/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 2 < $s > "outs/t2/10/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/10/01
+Elapsed: 0:05.56
+CPU: 191%
+Max memory: 228016 KB
+OK: samples/10/01
+==============================
+Running: samples/10/02
+Elapsed: 0:50.24
+CPU: 193%
+Max memory: 1683312 KB
+OK: samples/10/02
+==============================
+Running: samples/10/03
+Elapsed: 0:19.04
+CPU: 192%
+Max memory: 641780 KB
+OK: samples/10/03
+==============================
+Running: samples/10/04
+Elapsed: 2:49.09
+CPU: 192%
+Max memory: 5442012 KB
+OK: samples/10/04
+==============================
+Running: samples/10/05
+Elapsed: 0:02.68
+CPU: 189%
+Max memory: 127872 KB
+OK: samples/10/05
+==============================
+Running: samples/10/06
+Elapsed: 0:01.34
+CPU: 187%
+Max memory: 87168 KB
+OK: samples/10/06
+==============================
+Running: samples/10/07
+Elapsed: 0:04.49
+CPU: 188%
+Max memory: 186972 KB
+OK: samples/10/07
+==============================
+Running: samples/10/08
+Elapsed: 0:02.84
+CPU: 190%
+Max memory: 137088 KB
+OK: samples/10/08
+==============================
+Running: samples/10/09
+Elapsed: 0:10.65
+CPU: 191%
+Max memory: 388700 KB
+OK: samples/10/09
+==============================
+Running: samples/10/10
+Elapsed: 0:08.20
+CPU: 191%
+Max memory: 310184 KB
+OK: samples/10/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

@@ -1,0 +1,105 @@
+for s in samples/15/*; do \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > /dev/null; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/15/01
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+Command terminated by signal 6
+Elapsed: 56:16.69
+CPU: 566%
+Max memory: 207460656 KB
+Skipped/failed due to memory limit or runtime error: samples/15/01
+==============================
+Running: samples/15/02
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+Command terminated by signal 6
+Elapsed: 58:24.86
+CPU: 574%
+Max memory: 207440988 KB
+Skipped/failed due to memory limit or runtime error: samples/15/02
+==============================
+Running: samples/15/03
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 50:15.59
+CPU: 574%
+Max memory: 207398444 KB
+Skipped/failed due to memory limit or runtime error: samples/15/03
+==============================
+Running: samples/15/04
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 50:07.84
+CPU: 574%
+Max memory: 207378308 KB
+Skipped/failed due to memory limit or runtime error: samples/15/04
+==============================
+Running: samples/15/05
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 50:21.15
+CPU: 574%
+Max memory: 207305512 KB
+Skipped/failed due to memory limit or runtime error: samples/15/05
+==============================
+Running: samples/15/06
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+terminate called recursively
+Command terminated by signal 6
+Elapsed: 1:04:49
+CPU: 479%
+Max memory: 207636440 KB
+Skipped/failed due to memory limit or runtime error: samples/15/06
+==============================
+Running: samples/15/07
+terminate called after throwing an instance of 'St9bad_alloc'
+  what():  std::bad_alloc
+terminate called recursively
+Command terminated by signal 6
+Elapsed: 1:04:18
+CPU: 481%
+Max memory: 207641256 KB
+Skipped/failed due to memory limit or runtime error: samples/15/07
+==============================
+Running: samples/15/08
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 51:13.23
+CPU: 574%
+Max memory: 207366676 KB
+Skipped/failed due to memory limit or runtime error: samples/15/08
+==============================
+Running: samples/15/09
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 50:55.40
+CPU: 574%
+Max memory: 207400360 KB
+Skipped/failed due to memory limit or runtime error: samples/15/09
+==============================
+Running: samples/15/10
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 50:34.11
+CPU: 574%
+Max memory: 207397260 KB
+Skipped/failed due to memory limit or runtime error: samples/15/10

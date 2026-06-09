@@ -1,0 +1,75 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+for s in samples/multithread/9/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > "outs/9/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/multithread/9/01
+Elapsed: 0:00.16
+CPU: 1006%
+Max memory: 63360 KB
+OK: samples/multithread/9/01
+==============================
+Running: samples/multithread/9/02
+Elapsed: 0:00.16
+CPU: 1090%
+Max memory: 65280 KB
+OK: samples/multithread/9/02
+==============================
+Running: samples/multithread/9/03
+Elapsed: 0:01.56
+CPU: 1384%
+Max memory: 331776 KB
+OK: samples/multithread/9/03
+==============================
+Running: samples/multithread/9/04
+Elapsed: 0:00.35
+CPU: 1301%
+Max memory: 102144 KB
+OK: samples/multithread/9/04
+==============================
+Running: samples/multithread/9/05
+Elapsed: 0:00.28
+CPU: 1291%
+Max memory: 91776 KB
+OK: samples/multithread/9/05
+==============================
+Running: samples/multithread/9/06
+Elapsed: 0:00.33
+CPU: 1216%
+Max memory: 97152 KB
+OK: samples/multithread/9/06
+==============================
+Running: samples/multithread/9/07
+Elapsed: 0:00.31
+CPU: 1310%
+Max memory: 100992 KB
+OK: samples/multithread/9/07
+==============================
+Running: samples/multithread/9/08
+Elapsed: 0:00.11
+CPU: 906%
+Max memory: 55680 KB
+OK: samples/multithread/9/08
+==============================
+Running: samples/multithread/9/09
+Elapsed: 0:01.20
+CPU: 1383%
+Max memory: 261888 KB
+OK: samples/multithread/9/09
+==============================
+Running: samples/multithread/9/10
+Elapsed: 0:00.08
+CPU: 743%
+Max memory: 46848 KB
+OK: samples/multithread/9/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

@@ -1,0 +1,76 @@
+mkdir -p outs/t2/13
+for s in samples/13/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 2 < $s > "outs/t2/13/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/13/01
+Elapsed: 27:09.41
+CPU: 192%
+Max memory: 48495932 KB
+OK: samples/13/01
+==============================
+Running: samples/13/02
+Elapsed: 27:55.69
+CPU: 192%
+Max memory: 49838168 KB
+OK: samples/13/02
+==============================
+Running: samples/13/03
+Elapsed: 44:43.01
+CPU: 192%
+Max memory: 77705016 KB
+OK: samples/13/03
+==============================
+Running: samples/13/04
+Elapsed: 1:23:40
+CPU: 192%
+Max memory: 146921584 KB
+OK: samples/13/04
+==============================
+Running: samples/13/05
+Command terminated by signal 9
+Elapsed: 1:44:36
+CPU: 198%
+Max memory: 191653748 KB
+Skipped/failed due to memory limit or runtime error: samples/13/05
+==============================
+Running: samples/13/06
+Elapsed: 56:38.29
+CPU: 192%
+Max memory: 99974388 KB
+OK: samples/13/06
+==============================
+Running: samples/13/07
+Command terminated by signal 9
+Elapsed: 38:31.84
+CPU: 198%
+Max memory: 73655480 KB
+Skipped/failed due to memory limit or runtime error: samples/13/07
+==============================
+Running: samples/13/08
+Elapsed: 1:03:37
+CPU: 192%
+Max memory: 109994888 KB
+OK: samples/13/08
+==============================
+Running: samples/13/09
+Elapsed: 1:08:38
+CPU: 192%
+Max memory: 121864472 KB
+OK: samples/13/09
+==============================
+Running: samples/13/10
+Elapsed: 2:22.70
+CPU: 192%
+Max memory: 4674548 KB
+OK: samples/13/10

@@ -1,0 +1,81 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+mkdir -p outs/t8/13
+for s in samples/13/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 8 < $s > "outs/t8/13/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/13/01
+Elapsed: 9:40.09
+CPU: 612%
+Max memory: 46326152 KB
+OK: samples/13/01
+==============================
+Running: samples/13/02
+Elapsed: 10:53.92
+CPU: 619%
+Max memory: 50776444 KB
+OK: samples/13/02
+==============================
+Running: samples/13/03
+Elapsed: 16:46.19
+CPU: 613%
+Max memory: 79257668 KB
+OK: samples/13/03
+==============================
+Running: samples/13/04
+Elapsed: 27:39.64
+CPU: 608%
+Max memory: 128639960 KB
+OK: samples/13/04
+==============================
+Running: samples/13/05
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 35:12.36
+CPU: 761%
+Max memory: 207527308 KB
+Skipped/failed due to memory limit or runtime error: samples/13/05
+==============================
+Running: samples/13/06
+Elapsed: 20:11.62
+CPU: 611%
+Max memory: 94945316 KB
+OK: samples/13/06
+==============================
+Running: samples/13/07
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 35:03.35
+CPU: 760%
+Max memory: 207494540 KB
+Skipped/failed due to memory limit or runtime error: samples/13/07
+==============================
+Running: samples/13/08
+Elapsed: 23:43.54
+CPU: 609%
+Max memory: 111594728 KB
+OK: samples/13/08
+==============================
+Running: samples/13/09
+Elapsed: 26:58.75
+CPU: 610%
+Max memory: 126561992 KB
+OK: samples/13/09
+==============================
+Running: samples/13/10
+Elapsed: 0:57.19
+CPU: 615%
+Max memory: 4859548 KB
+OK: samples/13/10

@@ -1,0 +1,170 @@
+thread 0 started
+thread 1 started
+===================================================
+STATE 0
+===================================================
+
+        G G O 
+        Y Y W 
+        B B W 
+
+
+Y B W   O O G   O O Y   
+Y G W   R R R   Y B G   
+O O W   G G W   R R R   
+
+
+        R W B 
+        Y W B 
+        Y W B 
+
+
+        G B Y 
+        G O O 
+        R R B 
+
+
+===================================================
+STATE 1
+===================================================
+
+        O W W 
+        G Y B 
+        G Y B 
+
+
+B R R   Y B W   O O G   
+Y G W   R R R   Y B G   
+O O W   G G W   R R R   
+
+
+        R W B 
+        Y W B 
+        Y W B 
+
+
+        G B Y 
+        G O O 
+        Y O O 
+
+
+===================================================
+STATE 2
+===================================================
+
+        O W W 
+        G Y B 
+        G Y B 
+
+
+B R R   Y B W   O O G   
+Y G W   R R R   Y B G   
+G G W   R R R   Y B G   
+
+
+        B B B 
+        W W W 
+        R Y Y 
+
+
+        W O O 
+        G O O 
+        Y O O 
+
+
+===================================================
+STATE 3
+===================================================
+
+        G Y B 
+        G Y B 
+        G Y B 
+
+
+R R R   Y B W   O O O   
+Y G W   R R R   Y B W   
+Y G W   R R R   Y B W   
+
+
+        B B B 
+        W W W 
+        G G G 
+
+
+        O O O 
+        O O O 
+        W G Y 
+
+
+===================================================
+STATE 4
+===================================================
+
+        B B B 
+        Y Y Y 
+        G G G 
+
+
+Y G W   R R R   Y B W   
+Y G W   R R R   Y B W   
+Y G W   R R R   Y B W   
+
+
+        B B B 
+        W W W 
+        G G G 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 5
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        G G G 
+
+
+G G W   R R R   Y B B   
+G G W   R R R   Y B B   
+G G W   R R R   Y B B   
+
+
+        B B B 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 6
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        Y Y Y 
+
+
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+
+
+        W W W 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+

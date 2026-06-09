@@ -1,0 +1,95 @@
+for s in samples/multithread/14/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > "outs/14/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/multithread/14/01
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  Command terminated by signal 6
+Elapsed: 12:05.46
+CPU: 2254%
+Max memory: 208118652 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/01
+==============================
+Running: samples/multithread/14/02
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 12:13.85
+CPU: 2250%
+Max memory: 207989464 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/02
+==============================
+Running: samples/multithread/14/03
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+Command terminated by signal 6
+Elapsed: 12:14.36
+CPU: 2250%
+Max memory: 207949836 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/03
+==============================
+Running: samples/multithread/14/04
+Elapsed: 7:41.19
+CPU: 1277%
+Max memory: 73279428 KB
+OK: samples/multithread/14/04
+==============================
+Running: samples/multithread/14/05
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 12:11.52
+CPU: 2251%
+Max memory: 207811692 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/05
+==============================
+Running: samples/multithread/14/06
+terminate called recursively
+terminate called after throwing an instance of 'std::bad_alloc'
+Command terminated by signal 6
+Elapsed: 12:13.56
+CPU: 2249%
+Max memory: 208019312 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/06
+==============================
+Running: samples/multithread/14/07
+Elapsed: 22:25.76
+CPU: 1258%
+Max memory: 207205856 KB
+OK: samples/multithread/14/07
+==============================
+Running: samples/multithread/14/08
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 12:38.87
+CPU: 2230%
+Max memory: 208018720 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/08
+==============================
+Running: samples/multithread/14/09
+Elapsed: 7:41.18
+CPU: 1283%
+Max memory: 70129396 KB
+OK: samples/multithread/14/09
+==============================
+Running: samples/multithread/14/10
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 13:07.93
+CPU: 2216%
+Max memory: 208072720 KB
+Skipped/failed due to memory limit or runtime error: samples/multithread/14/10

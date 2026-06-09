@@ -1,0 +1,75 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+for s in samples/multithread/5/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 24 < $s > "outs/5/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/multithread/5/01
+Elapsed: 0:00.07
+CPU: 450%
+Max memory: 46848 KB
+OK: samples/multithread/5/01
+==============================
+Running: samples/multithread/5/02
+Elapsed: 0:00.07
+CPU: 451%
+Max memory: 46848 KB
+OK: samples/multithread/5/02
+==============================
+Running: samples/multithread/5/03
+Elapsed: 0:00.07
+CPU: 514%
+Max memory: 46848 KB
+OK: samples/multithread/5/03
+==============================
+Running: samples/multithread/5/04
+Elapsed: 0:00.07
+CPU: 472%
+Max memory: 46464 KB
+OK: samples/multithread/5/04
+==============================
+Running: samples/multithread/5/05
+Elapsed: 0:00.06
+CPU: 445%
+Max memory: 46848 KB
+OK: samples/multithread/5/05
+==============================
+Running: samples/multithread/5/06
+Elapsed: 0:00.08
+CPU: 551%
+Max memory: 46848 KB
+OK: samples/multithread/5/06
+==============================
+Running: samples/multithread/5/07
+Elapsed: 0:00.08
+CPU: 603%
+Max memory: 46848 KB
+OK: samples/multithread/5/07
+==============================
+Running: samples/multithread/5/08
+Elapsed: 0:00.07
+CPU: 422%
+Max memory: 46848 KB
+OK: samples/multithread/5/08
+==============================
+Running: samples/multithread/5/09
+Elapsed: 0:00.07
+CPU: 461%
+Max memory: 46848 KB
+OK: samples/multithread/5/09
+==============================
+Running: samples/multithread/5/10
+Elapsed: 0:00.07
+CPU: 494%
+Max memory: 46848 KB
+OK: samples/multithread/5/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'

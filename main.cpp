@@ -78,19 +78,21 @@ bool solved(vector<face>& cube) {
 // }
 
 vector<map<size_t, pair<vector<face>,size_t>>> open, closed;
-vector<priority_queue<pair<size_t,vector<face>>>> pq;
-vector<queue<pair<size_t,pair<vector<face>,size_t>>>> qs;
+vector<priority_queue<pair<long long,vector<face>>>> pq;
+vector<queue<pair<long long,pair<vector<face>,size_t>>>> qs;
 vector<mutex> mtx;
+mutex sol_mtx;
 size_t num = 0, sol_hash = 0, sol_thread = 0;
 bool solution_found = false;
+NibblePDB cornerPDB("./pdbs/corner.pdb", NUM_CORNER_STATES, 1);
 
-void enqueue(size_t target, vector<face>& a, size_t w, size_t parent){
+void enqueue(size_t target, vector<face>& a, long long w, size_t parent){
     mtx[target].lock();
     qs[target].push({(w + 1), {a, parent}});
     mtx[target].unlock();
 }
 
-void dequeue(size_t id, NibblePDB& cornerPDB){
+void dequeue(size_t id){
     queue<pair<size_t,pair<vector<face>,size_t>>> q;
     mtx[id].lock();
     while(!qs[id].empty()){
@@ -110,25 +112,26 @@ void dequeue(size_t id, NibblePDB& cornerPDB){
 
 void thread_astar(vector<face> cube, size_t id){
     cout << "thread " << id << " started\n";
-    NibblePDB cornerPDB("./pdbs/corner.pdb", NUM_CORNER_STATES, 1);
-    open[id][fhash(cube)] = {cube, fhash(cube)};
-    pq[id].push({-cornerHeuristic(cube, cornerPDB), cube});
-    while(!pq[id].empty()){
-        if(solution_found) 
-            return;
+    while(!solution_found){
+		if(pq[id].empty()){
+			dequeue(id);
+			continue;
+		}
         auto [w, v] = pq[id].top();
         pq[id].pop();
         w = -w; w -= cornerHeuristic(v, cornerPDB);
         closed[id][fhash(v)] = {v, open[id][fhash(v)].second};
         open[id].erase(fhash(v));
         vector<vector<face>> adj = get_adj(v);
-        for(auto a: adj){
+        for(auto& a: adj){
             size_t target = fhash(a) % num;
             if(solved(a)){
+				sol_mtx.lock();
                 solution_found = true;
                 sol_hash = fhash(a);
                 sol_thread = id;
                 closed[id][fhash(a)] = {a, fhash(v)};
+				sol_mtx.unlock();
                 return;
             }
             if(target == id && !open[id].count(fhash(a)) && !closed[id].count(fhash(a))){
@@ -138,7 +141,7 @@ void thread_astar(vector<face> cube, size_t id){
             else
                 enqueue(target, a, w, fhash(v));
         }
-        dequeue(id, cornerPDB);
+        dequeue(id);
     }    
 }
 
@@ -200,12 +203,14 @@ int main(int argc, char* argv[]){
     num = atoi(argv[1]);
     open = vector<map<size_t, pair<vector<face>,size_t>>>(num);
     closed = vector<map<size_t, pair<vector<face>,size_t>>>(num);
-    pq = vector<priority_queue<pair<size_t,vector<face>>>>(num);
-    qs = vector<queue<pair<size_t,pair<vector<face>,size_t>>>>(num);
+    pq = vector<priority_queue<pair<long long,vector<face>>>>(num);
+    qs = vector<queue<pair<long long,pair<vector<face>,size_t>>>>(num);
     mtx = vector<mutex>(num);
     
     vector<face> cube = read_cube();
     
+    open[fhash(cube) % num][fhash(cube)] = {cube, fhash(cube)};
+    pq[fhash(cube) % num].push({-cornerHeuristic(cube, cornerPDB), cube});
     vector<thread> ts;
     for(size_t i = 0; i < num; i++)
         ts.emplace_back(thread_astar, cube, i);

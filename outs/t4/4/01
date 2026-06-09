@@ -1,0 +1,124 @@
+thread thread 0 started
+1 started
+thread 2 started
+thread 3 started
+===================================================
+STATE 0
+===================================================
+
+        B B R 
+        Y Y R 
+        W W R 
+
+
+Y G B   R R Y   G G G   
+Y G B   R R W   B B B   
+Y G B   R R G   W W W   
+
+
+        Y Y O 
+        W W O 
+        G G O 
+
+
+        O O B 
+        O O Y 
+        O O W 
+
+
+===================================================
+STATE 1
+===================================================
+
+        B B B 
+        Y Y Y 
+        W W W 
+
+
+Y G B   R R R   G B W   
+Y G B   R R R   G B W   
+Y G B   R R R   G B W   
+
+
+        Y Y Y 
+        W W W 
+        G G G 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 2
+===================================================
+
+        B B B 
+        Y Y Y 
+        G G G 
+
+
+Y G W   R R R   Y B W   
+Y G W   R R R   Y B W   
+Y G W   R R R   Y B W   
+
+
+        B B B 
+        W W W 
+        G G G 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 3
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        G G G 
+
+
+G G W   R R R   Y B B   
+G G W   R R R   Y B B   
+G G W   R R R   Y B B   
+
+
+        B B B 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+
+===================================================
+STATE 4
+===================================================
+
+        Y Y Y 
+        Y Y Y 
+        Y Y Y 
+
+
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+G G G   R R R   B B B   
+
+
+        W W W 
+        W W W 
+        W W W 
+
+
+        O O O 
+        O O O 
+        O O O 
+
+

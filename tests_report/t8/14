@@ -1,0 +1,31 @@
+mkdir -p outs/t8/14
+for s in 4 7 9; do \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 8 < samples/14/0$s > "outs/t8/14/0$s"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: 4
+Elapsed: 16:39.84
+CPU: 596%
+Max memory: 73950328 KB
+OK: 4
+==============================
+Running: 7
+Elapsed: 1:10:01
+CPU: 476%
+Max memory: 200834420 KB
+OK: 7
+==============================
+Running: 9
+Elapsed: 15:24.98
+CPU: 610%
+Max memory: 70548544 KB
+OK: 9

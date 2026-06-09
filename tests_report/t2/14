@@ -1,0 +1,34 @@
+mkdir -p outs/t2/14
+for s in 4 7 9; do \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 2 < samples/14/0$s > "outs/t2/14/0$s"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: 4
+Elapsed: 1:04:52
+CPU: 190%
+Max memory: 74415104 KB
+OK: 4
+==============================
+Running: 7
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 2:56:07
+CPU: 196%
+Max memory: 207829072 KB
+Skipped/failed due to memory limit or runtime error: 7
+==============================
+Running: 9
+Elapsed: 1:01:04
+CPU: 189%
+Max memory: 69703024 KB
+OK: 9

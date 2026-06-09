@@ -1,0 +1,96 @@
+make[1]: Entering directory '/home/esw/a211029405/rubik-s-cube'
+mkdir -p outs/t1/14
+for s in samples/14/*; do \
+	out=${s##*/}; \
+	echo "=============================="; \
+	echo "Running: $s"; \
+	LIMIT_BYTES=$(( 200 * 1024 * 1024 * 1024 )); \
+	if /usr/bin/time -f "Elapsed: %E\nCPU: %P\nMax memory: %M KB" \
+		prlimit --as=$LIMIT_BYTES ./bin/bin 1 < $s > "outs/t1/14/$out"; \
+	then \
+		echo "OK: $s"; \
+	else \
+		echo "Skipped/failed due to memory limit or runtime error: $s"; \
+	fi; \
+done
+==============================
+Running: samples/14/01
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:32:03
+CPU: 99%
+Max memory: 207850540 KB
+Skipped/failed due to memory limit or runtime error: samples/14/01
+==============================
+Running: samples/14/02
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:47:22
+CPU: 99%
+Max memory: 207851064 KB
+Skipped/failed due to memory limit or runtime error: samples/14/02
+==============================
+Running: samples/14/03
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:34:02
+CPU: 99%
+Max memory: 207847968 KB
+Skipped/failed due to memory limit or runtime error: samples/14/03
+==============================
+Running: samples/14/04
+Elapsed: 1:16:01
+CPU: 99%
+Max memory: 75245204 KB
+OK: samples/14/04
+==============================
+Running: samples/14/05
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:37:44
+CPU: 99%
+Max memory: 207849608 KB
+Skipped/failed due to memory limit or runtime error: samples/14/05
+==============================
+Running: samples/14/06
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:35:20
+CPU: 99%
+Max memory: 207849344 KB
+Skipped/failed due to memory limit or runtime error: samples/14/06
+==============================
+Running: samples/14/07
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Command terminated by signal 6
+Elapsed: 3:30:52
+CPU: 99%
+Max memory: 207851528 KB
+Skipped/failed due to memory limit or runtime error: samples/14/07
+==============================
+Running: samples/14/08
+Command terminated by signal 9
+Elapsed: 10:49.69
+CPU: 99%
+Max memory: 11990060 KB
+Skipped/failed due to memory limit or runtime error: samples/14/08
+==============================
+Running: samples/14/09
+Elapsed: 1:10:54
+CPU: 99%
+Max memory: 70307152 KB
+OK: samples/14/09
+==============================
+Running: samples/14/10
+Command terminated by signal 9
+Elapsed: 28:20.56
+CPU: 99%
+Max memory: 29860508 KB
+Skipped/failed due to memory limit or runtime error: samples/14/10
+make[1]: Leaving directory '/home/esw/a211029405/rubik-s-cube'
